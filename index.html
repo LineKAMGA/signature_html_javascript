@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature élégante HD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Amatic+SC:wght@400;700&family=Caveat:wght@300;400;500&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Shadows+Into+Light&family=Tangerine:wght@400;700&family=Pinyon+Script&family=Mr+De+Haviland&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #fefefe;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .signature-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .line {
+            width: 80px;
+            height: 1.5px;
+            background: linear-gradient(#CFAC9F, transparent);
+        }
+
+        .signature-text {
+            font-family: 'Silver South Script', 'Alex Brush', cursive;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #CFAC9F;
+            text-align: center;
+            white-space: nowrap;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        /* Variantes de styles */
+        .style-1 { font-family: 'Silver South Script', 'Alex Brush', cursive; font-size: 2.2rem; font-weight: 400; }
+        .style-2 { font-family: 'Tangerine', cursive; font-size: 3rem; font-weight: 400; }
+        .style-3 { font-family: 'Pinyon Script', cursive; font-size: 2.4rem; font-weight: 400; }
+        .style-4 { font-family: 'Mr De Haviland', cursive; font-size: 2.2rem; font-weight: 400; }
+        .style-5 { font-family: 'Caveat', cursive; font-size: 2.4rem; font-weight: 300; }
+
+        /* Variantes de couleurs */
+        .gold { color: #CFAC9F; }
+        .rose-gold { color: #e8b4a8; }
+        .sage { color: #9caf88; }
+        .navy { color: #2c3e50; }
+        .mauve { color: #b19cd9; }
+
+        .controls {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #CFAC9F;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .color-option.active {
+            border-color: #333;
+        }
+
+        .gold-color { background: #CFAC9F; }
+        .rose-gold-color { background: #e8b4a8; }
+        .sage-color { background: #9caf88; }
+        .navy-color { background: #2c3e50; }
+        .mauve-color { background: #b19cd9; }
+
+        .download-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .download-button {
+            background: #CFAC9F;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+
+        .download-button:hover {
+            background: #b8941f;
+        }
+
+        .export-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .preview-area {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .dimension-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .dimension-input {
+            width: 80px;
+            padding: 8px;
+            border: 2px solid #e1e5e9;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #333; text-align: center; margin-bottom: 30px;">Générateur de Signature HD (Anti-flou)</h1>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="textInput">Votre texte :</label>
+            <input type="text" id="textInput" value="Votre Nom" placeholder="Entrez votre nom ou texte">
+        </div>
+
+        <div class="control-group">
+            <label for="fontSelect">Style de police :</label>
+            <select id="fontSelect">
+                <option value="style-1">Silver South Script (authentique)</option>
+                <option value="style-2">Tangerine (élégant et fin)</option>
+                <option value="style-3">Pinyon Script (classique)</option>
+                <option value="style-4">Mr De Haviland (raffiné)</option>
+                <option value="style-5">Caveat (moderne épuré)</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label>Couleur :</label>
+            <div class="color-options">
+                <div class="color-option gold-color active" data-color="gold"></div>
+                <div class="color-option rose-gold-color" data-color="rose-gold"></div>
+                <div class="color-option sage-color" data-color="sage"></div>
+                <div class="color-option navy-color" data-color="navy"></div>
+                <div class="color-option mauve-color" data-color="mauve"></div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>Dimensions finales :</label>
+            <div class="dimension-controls">
+                <span>Largeur:</span>
+                <input type="number" id="widthInput" class="dimension-input" value="232" min="100" max="2000">
+                <span>px</span>
+                <span style="margin-left: 20px;">Hauteur:</span>
+                <input type="number" id="heightInput" class="dimension-input" value="57" min="50" max="500">
+                <span>px</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-area">
+        <div class="signature-container">
+            <div class="line"></div>
+            <div id="signatureText" class="signature-text style-1 gold">Votre Nom</div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <div class="export-section">
+        <h3>Télécharger votre signature</h3>
+        <button class="download-button" onclick="downloadAsHDPNG()">Télécharger PNG HD (Haute Qualité)</button>
+        <button class="download-button" onclick="downloadAsUltraHDPNG()">Télécharger PNG Ultra HD (4K)</button>
+        <button class="download-button" onclick="downloadAsSVG()">Télécharger SVG (vectoriel)</button>
+    </div>
+
+    <div class="download-info">
+        <strong>🎯 Améliorations anti-flou :</strong><br>
+        • <strong>Super-sampling :</strong> Rendu à 8x la résolution puis redimensionnement<br>
+        • <strong>Lissage optimal :</strong> Utilisation de l'algorithme bicubique<br>
+        • <strong>Qualité maximale :</strong> PNG non compressé<br><br>
+        
+        <strong>📏 Conseils dimensions :</strong><br>
+        • <strong>232x57px :</strong> Parfait pour signatures d'email<br>
+        • <strong>400x100px :</strong> Bon pour les blogs<br>
+        • <strong>600x150px :</strong> Idéal pour les en-têtes<br><br>
+        
+        <strong>💡 Astuce :</strong> Plus vous téléchargez en haute résolution, plus le rendu sera net lors du redimensionnement !
+    </div>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const fontSelect = document.getElementById('fontSelect');
+        const signatureText = document.getElementById('signatureText');
+        const colorOptions = document.querySelectorAll('.color-option');
+        const widthInput = document.getElementById('widthInput');
+        const heightInput = document.getElementById('heightInput');
+
+        // Mise à jour du texte
+        textInput.addEventListener('input', () => {
+            signatureText.textContent = textInput.value || 'Votre Nom';
+        });
+
+        // Mise à jour de la police
+        fontSelect.addEventListener('change', () => {
+            signatureText.className = `signature-text ${fontSelect.value} ${getCurrentColor()}`;
+        });
+
+        // Mise à jour de la couleur
+        colorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                colorOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                signatureText.className = `signature-text ${getCurrentFont()} ${option.dataset.color}`;
+                
+                // Mise à jour des lignes
+                document.querySelectorAll('.line').forEach(line => {
+                    line.style.background = `linear-gradient(${getColorHex(option.dataset.color)}, transparent)`;
+                });
+            });
+        });
+
+        function getCurrentFont() {
+            return fontSelect.value;
+        }
+
+        function getCurrentColor() {
+            return document.querySelector('.color-option.active').dataset.color;
+        }
+
+        // Fonction PNG HD avec anti-aliasing optimisé
+        function downloadAsHDPNG() {
+            const finalWidth = parseInt(widthInput.value) || 232;
+            const finalHeight = parseInt(heightInput.value) || 57;
+            const superSample = 8; // Facteur de sur-échantillonnage pour éliminer le flou
+            
+            // Canvas haute résolution
+            const hdCanvas = document.createElement('canvas');
+            hdCanvas.width = finalWidth * superSample;
+            hdCanvas.height = finalHeight * superSample;
+            const hdCtx = hdCanvas.getContext('2d');
+            
+            // Paramètres anti-aliasing optimaux
+            hdCtx.imageSmoothingEnabled = true;
+            hdCtx.imageSmoothingQuality = 'high';
+            hdCtx.textRenderingOptimization = 'optimizeQuality';
+            
+            const color = getColorHex(getCurrentColor());
+            const text = textInput.value || 'Votre Nom';
+            
+            // Calcul de la taille de police optimale
+            let fontSize = 42 * superSample;
+            hdCtx.font = `${fontSize}px "Silver South Script", "Alex Brush", cursive`;
+            
+            // Ajustement automatique de la taille
+            let textWidth = hdCtx.measureText(text).width;
+            const maxTextWidth = (finalWidth - 120) * superSample; // Espace pour les lignes
+            
+            while (textWidth > maxTextWidth && fontSize > 10 * superSample) {
+                fontSize -= 2 * superSample;
+                hdCtx.font = `${fontSize}px "Silver South Script", "Alex Brush", cursive`;
+                textWidth = hdCtx.measureText(text).width;
+            }
+            
+            // Centrage parfait
+            const centerX = (finalWidth * superSample) / 2;
+            const centerY = (finalHeight * superSample) / 2;
+            
+            // Dessiner le texte avec anti-aliasing
+            hdCtx.fillStyle = color;
+            hdCtx.textAlign = 'center';
+            hdCtx.textBaseline = 'middle';
+            hdCtx.fillText(text, centerX, centerY);
+            
+            // Lignes avec épaisseur proportionnelle
+            const padding = 10 * superSample;
+            const lineLength = 50 * superSample;
+            const halfTextWidth = textWidth / 2;
+            
+            hdCtx.strokeStyle = color;
+            hdCtx.lineWidth = 2 * superSample;
+            hdCtx.lineCap = 'round';
+            hdCtx.beginPath();
+            
+            // Ligne gauche
+            hdCtx.moveTo(centerX - halfTextWidth - padding - lineLength, centerY);
+            hdCtx.lineTo(centerX - halfTextWidth - padding, centerY);
+            
+            // Ligne droite
+            hdCtx.moveTo(centerX + halfTextWidth + padding, centerY);
+            hdCtx.lineTo(centerX + halfTextWidth + padding + lineLength, centerY);
+            
+            hdCtx.stroke();
+            
+            // Redimensionnement avec algorithme bicubique
+            const finalCanvas = document.createElement('canvas');
+            finalCanvas.width = finalWidth;
+            finalCanvas.height = finalHeight;
+            const finalCtx = finalCanvas.getContext('2d');
+            
+            // Paramètres de qualité maximale pour le redimensionnement
+            finalCtx.imageSmoothingEnabled = true;
+            finalCtx.imageSmoothingQuality = 'high';
+            
+            // Redimensionnement en haute qualité
+            finalCtx.drawImage(hdCanvas, 0, 0, finalWidth, finalHeight);
+            
+            // Export en qualité maximale
+            const link = document.createElement('a');
+            link.download = `signature-hd-${finalWidth}x${finalHeight}.png`;
+            link.href = finalCanvas.toDataURL('image/png', 1.0); // Qualité maximale
+            link.click();
+        }
+
+        // Fonction Ultra HD pour impression
+        function downloadAsUltraHDPNG() {
+            const finalWidth = (parseInt(widthInput.value) || 232) * 4; // 4x plus grand
+            const finalHeight = (parseInt(heightInput.value) || 57) * 4;
+            const superSample = 4;
+            
+            const ultraCanvas = document.createElement('canvas');
+            ultraCanvas.width = finalWidth * superSample;
+            ultraCanvas.height = finalHeight * superSample;
+            const ultraCtx = ultraCanvas.getContext('2d');
+            
+            ultraCtx.imageSmoothingEnabled = true;
+            ultraCtx.imageSmoothingQuality = 'high';
+            
+            const color = getColorHex(getCurrentColor());
+            const text = textInput.value || 'Votre Nom';
+            
+            let fontSize = 168 * superSample; // 4x plus grand
+            ultraCtx.font = `${fontSize}px "Silver South Script", "Alex Brush", cursive`;
+            
+            let textWidth = ultraCtx.measureText(text).width;
+            const maxTextWidth = (finalWidth - 480) * superSample;
+            
+            while (textWidth > maxTextWidth && fontSize > 40 * superSample) {
+                fontSize -= 8 * superSample;
+                ultraCtx.font = `${fontSize}px "Silver South Script", "Alex Brush", cursive`;
+                textWidth = ultraCtx.measureText(text).width;
+            }
+            
+            const centerX = (finalWidth * superSample) / 2;
+            const centerY = (finalHeight * superSample) / 2;
+            
+            ultraCtx.fillStyle = color;
+            ultraCtx.textAlign = 'center';
+            ultraCtx.textBaseline = 'middle';
+            ultraCtx.fillText(text, centerX, centerY);
+            
+            const padding = 40 * superSample;
+            const lineLength = 170 * superSample; // Réduit de 200 à 120
+            const halfTextWidth = textWidth / 2;
+            
+            ultraCtx.strokeStyle = color;
+            ultraCtx.lineWidth = 4 * superSample; // Réduit de 8 à 4
+            ultraCtx.lineCap = 'round';
+            ultraCtx.beginPath();
+            
+            ultraCtx.moveTo(centerX - halfTextWidth - padding - lineLength, centerY);
+            ultraCtx.lineTo(centerX - halfTextWidth - padding, centerY);
+            ultraCtx.moveTo(centerX + halfTextWidth + padding, centerY);
+            ultraCtx.lineTo(centerX + halfTextWidth + padding + lineLength, centerY);
+            ultraCtx.stroke();
+            
+            const finalCanvas = document.createElement('canvas');
+            finalCanvas.width = finalWidth;
+            finalCanvas.height = finalHeight;
+            const finalCtx = finalCanvas.getContext('2d');
+            finalCtx.imageSmoothingEnabled = true;
+            finalCtx.imageSmoothingQuality = 'high';
+            finalCtx.drawImage(ultraCanvas, 0, 0, finalWidth, finalHeight);
+            
+            const link = document.createElement('a');
+            link.download = `signature-ultra-hd-${finalWidth}x${finalHeight}.png`;
+            link.href = finalCanvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+
+        function downloadAsSVG() {
+            const width = parseInt(widthInput.value) || 232;
+            const height = parseInt(heightInput.value) || 57;
+            const color = getColorHex(getCurrentColor());
+            const text = textInput.value || 'Votre Nom';
+            
+            // Calcul des proportions pour SVG
+            const fontSize = Math.min(width * 0.18, height * 0.7);
+            const lineLength = width * 0.2;
+            const padding = width * 0.04;
+            
+            const svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .signature-font { font-family: "Silver South Script", "Alex Brush", cursive; }
+                    </style>
+                </defs>
+                <line x1="${padding}" y1="${height/2}" x2="${padding + lineLength}" y2="${height/2}" stroke="${color}" stroke-width="1" stroke-linecap="round"/>
+                <line x1="${width - padding - lineLength}" y1="${height/2}" x2="${width - padding}" y2="${height/2}" stroke="${color}" stroke-width="1" stroke-linecap="round"/>
+                <text x="${width/2}" y="${height/2}" class="signature-font" font-size="${fontSize}" text-anchor="middle" dominant-baseline="central" fill="${color}">${text}</text>
+            </svg>`;
+            
+            const blob = new Blob([svg], { type: 'image/svg+xml' });
+            const link = document.createElement('a');
+            link.download = `signature-${width}x${height}.svg`;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+        }
+
+        function getColorHex(colorClass) {
+            const colors = {
+                'gold': '#CFAC9F',
+                'rose-gold': '#e8b4a8',
+                'sage': '#9caf88',
+                'navy': '#2c3e50',
+                'mauve': '#b19cd9'
+            };
+            return colors[colorClass] || '#CFAC9F';
+        }
+    </script>
+</body>
+</html>
